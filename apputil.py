@@ -93,7 +93,7 @@ def family_groups():
         max_fare=('Fare', 'max')
         )
     
-    return df_summary
+    return df_summary.reset_index()
 
 def last_names():
     '''assigned function to return last names and counts of passengers with that last name'''
