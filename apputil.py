@@ -33,7 +33,7 @@ def survival_demographics():
     
 
     #return the dataframe
-    return df_summary
+    return df_summary.reset_index()
 
 def visualize_demographic():
     '''returns plotly figure to answer the question if women and children were truly prioritized'''
