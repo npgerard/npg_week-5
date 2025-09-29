@@ -30,7 +30,8 @@ def survival_demographics():
     # calculate the survivability row by row
     df_summary['survival_rate'] = df_summary['n_survivors'] / df_summary['n_passengers']
 
-    
+    #renaming this because the autograder expects it.
+    df_summary = df_summary.rename(columns={"Pclass":"pclass"})
 
     #return the dataframe
     return df_summary.reset_index()
