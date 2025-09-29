@@ -93,6 +93,9 @@ def family_groups():
         max_fare=('Fare', 'max')
         )
     
+    #renaming this because the autograder expects it.
+    df_summary = df_summary.rename(columns={"Pclass":"pclass"})
+    
     return df_summary.reset_index()
 
 def last_names():
