@@ -21,13 +21,14 @@ def survival_demographics():
     df['survived_numeric'] = df['Survived'].astype(int)
 
     # summarize number of passengers and survivors by class, sex, and age group
-    df_summary = df.groupby(['Pclass','Sex','age_group'], observed=True).agg(
+    df_summary = df.groupby(['Pclass','Sex','age_group'], observed=False).agg(
         n_passengers=('age_group','size'),
         n_survivors=('survived_numeric','sum')
     )
 
     # calculate the survivability row by row
     df_summary['survival_rate'] = df_summary['n_survivors'] / df_summary['n_passengers']
+    df_summary['survival_rate'] = df_summary['survival_rate'].fillna(0)
 
     # reset index first, then rename Pclass → pclass
     df_summary = df_summary.reset_index().rename(columns={"Pclass":"pclass", "Sex":"sex"})
