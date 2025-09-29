@@ -21,10 +21,11 @@ def survival_demographics():
     df['survived_numeric'] = df['Survived'].astype(int)
 
     # summarize number of passengers and survivors by class, sex, and age group
-    df_summary = df.groupby(['Pclass','Sex','age_group']).agg(
+    df_summary = df.groupby(['Pclass','Sex','age_group'], observed=True).agg(
         n_passengers=('age_group','size'),
         n_survivors=('survived_numeric','sum')
     )
+
 
     # calculate the survivability row by row
     df_summary['survival_rate'] = df_summary['n_survivors'] / df_summary['n_passengers']
@@ -104,6 +105,8 @@ def last_names():
 
 def visualize_families():
     '''provides scatterplot of average cost of ticket per family size for 3rd class passengers'''
+
+    #get the dataset and reset the index so we can use it as a regular dataframe.
     df = family_groups().reset_index()
     df_pclass3 = df[df["Pclass"] == 3]
 
