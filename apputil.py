@@ -46,7 +46,7 @@ def visualize_demographic():
 
     # categorize each record as either 'Women and Children' or 'Other'
     df_prelim['priority_category'] = np.where(
-        (df_prelim['Sex'] == 'female') | (df_prelim['age_group'].isin(['Child', 'Teen'])),
+        (df_prelim['sex'] == 'female') | (df_prelim['age_group'].isin(['Child', 'Teen'])),
         'Women and Children',
         'Other'
     )
