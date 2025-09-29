@@ -26,15 +26,15 @@ def survival_demographics():
         n_survivors=('survived_numeric','sum')
     )
 
-
     # calculate the survivability row by row
     df_summary['survival_rate'] = df_summary['n_survivors'] / df_summary['n_passengers']
 
-    #renaming this because the autograder expects it.
-    df_summary = df_summary.rename(columns={"Pclass":"pclass"})
+    # reset index first, then rename Pclass → pclass
+    df_summary = df_summary.reset_index().rename(columns={"Pclass":"pclass"})
 
-    #return the dataframe
-    return df_summary.reset_index()
+    # return the dataframe
+    return df_summary
+
 
 def visualize_demographic():
     '''returns plotly figure to answer the question if women and children were truly prioritized'''
