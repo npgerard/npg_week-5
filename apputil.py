@@ -30,7 +30,7 @@ def survival_demographics():
     df_summary['survival_rate'] = df_summary['n_survivors'] / df_summary['n_passengers']
 
     # reset index first, then rename Pclass → pclass
-    df_summary = df_summary.reset_index().rename(columns={"Pclass":"pclass"})
+    df_summary = df_summary.reset_index().rename(columns={"Pclass":"pclass", "Sex":"sex"})
 
     # return the dataframe
     return df_summary
